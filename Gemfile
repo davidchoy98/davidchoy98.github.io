@@ -9,3 +9,5 @@ gem "jekyll", "~> 4.1"
 gem "jekyll-seo-tag"
 gem "wdm"
 
+
+gem "webrick", "~> 1.7"
