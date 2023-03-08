@@ -24,6 +24,26 @@ body {
 
 body {
     font-family : Montserrat;
+	line-height: 1.5;
+
+	header {
+		position: relative;
+		min-height: 70vh;
+
+		&:before {
+			content: "";
+			background: url(../images/header-background.jpg) no-repeat center center;
+			background-size: cover;
+			height: 70vh;
+			left: 0;
+			position: absolute;
+			width: 100%;
+		}
+
+		.lead {
+			color: #fff;
+		}
+	}
 
     .landing {
 		#biodata {

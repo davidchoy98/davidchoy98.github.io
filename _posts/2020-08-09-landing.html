@@ -6,8 +6,8 @@ permalink: /home
 
 <header>
     <div class="container">
-        <div class="jumbotron">
-            <p class="jumbotron-heading">Hello there! This is David Choy.</p>
+        <div class="jumbotron jumbotron-fluid text-center position-relative bg-transparent">
+            <h3 class="display-4 text-white">Hello there! This is David Choy.</h3>
             <p class="lead" id="typewriter"></p>
         </div>
     </div>
@@ -21,8 +21,15 @@ permalink: /home
                     <p class="text-center font-weight-bold">Gist About Me</p>
                     <div class="my-3">
                         <p class="text-center">Bonjour! Je m'appelle David! Enchanté!</p>
-                        <p class="text-center">By the name Choy Ban Lin, or you may call me David. Born in the year 1998, is a young and passionate teenager stying in Cheras, Selangor, Malaysia.</p>
-                        <p class="text-center">Graduates of Universiti Tunku Abdul Rahman (UTAR), spent 3 years in getting a Bachelor Degree in Software Engineering, I'm now well trained to handle stress and frustrations when my program doesn't work.</p>
+                        <p class="text-center">
+                            By the name Choy Ban Lin, or you may call me David. Born in the year 1998, is a young and passionate teenager staying in Cheras, Selangor, 
+                            Malaysia.
+                        </p>
+                        <p class="text-center">
+                            A graduate of Universiti Tunku Abdul Rahman (UTAR), spent 3 years in getting myself a 
+                            <span class="font-weight-bold">Bachelor Degree in Software Engineering</span>, I'm now well trained to handle stress and frustrations when my 
+                            program doesn't work.
+                        </p>
                         <p class="text-center">If you ever wonder, since it's so frustrating learning programming, why am I asking for trouble?</p>
                         <ul>
                             <li>It's fun</li>
@@ -39,22 +46,28 @@ permalink: /home
                     <p class="text-center font-weight-bold">Programming Languages That I Know</p>
                     <div class="row">
                         <div class="col text-center">
-                            <i class="fab fa-js-square pl-icon"></i>
+                            <i class="fa-brands fa-js-square pl-icon"></i>
                         </div>
                         <div class="col text-center">
-                            <i class="fab fa-java pl-icon"></i>
+                            <i class="fa-brands fa-java pl-icon"></i>
                         </div>
                         <div class="col text-center">
-                            <i class="fab fa-html5 pl-icon"></i>
+                            <i class="fa-brands fa-html5 pl-icon"></i>
                         </div>
                         <div class="col text-center">
-                            <i class="fab fa-css3-alt pl-icon"></i>
+                            <i class="fa-brands fa-css3-alt pl-icon"></i>
                         </div>
                         <div class="col text-center">
-                            <i class="fab fa-php pl-icon"></i>
+                            <i class="fa-brands fa-php pl-icon"></i>
                         </div>
                         <div class="col text-center">
-                            <i class="fab fa-laravel pl-icon"></i>
+                            <i class="fa-brands fa-laravel pl-icon"></i>
+                        </div>
+                        <div class="col text-center">
+                            <i class="fa-brands fa-vuejs pl-icon"></i>
+                        </div>
+                        <div class="col text-center">
+                            <i class="fa-brands fa-react"></i>
                         </div>
                     </div>
                 </div>
@@ -192,18 +205,19 @@ permalink: /home
 
 <!-- JS -->
 <script>
-    $(document).ready(function() {
+    $(function() {
         $('#typewriter').t(
-            'I am a Developer from Cheras, Malaysia. Find out more about me down below! Cheers!',
-        {
+            `I'm a Software Engineer aka Developer <ins>.3</ins> from <kbd>Cheras, Malaysia</kbd>. <ins>1</ins> Find out more about me down below! <ins>.5</ins> Cheers!`,
+        [{
+            speed: 100,
             speed_vary : true,
             mistype : true,
             blink : true,
             locale : 'en',
-        });
+            repeat: true
+        }]);
 
         $('.carousel.lazy').on('slide.bs.carousel', function(e) {
-            console.log(e.relatedTarget);
             let lazy = $(e.relatedTarget).find('img[data-src]');
             lazy.attr('src', lazy.data('src'));
             lazy.removeAttr('data-src');
