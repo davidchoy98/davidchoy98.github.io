@@ -1,0 +1,109 @@
+@import '../../node_modules/bootstrap/scss/functions';
+
+// Custom Colors
+$beigish-grey: #8c877d;
+$beige: #fcdcc2;
+$dark-blue: #353c40;
+$gray: #575958;
+$grayish-beige: #d9c3a9;
+
+$primary: $dark-blue;
+$secondary: $gray;
+
+$body-bg: $primary;
+$body-color: $beige;
+
+// Styles
+$border-radius: 2rem;
+$line-height: 1.5rem;
+
+@import '../../node_modules/bootstrap/scss/variables';
+
+// Color Maps
+$beigish-greys: (
+    "beigish-grey-100": tint-color($beigish-grey, 80%),
+    "beigish-grey-200": tint-color($beigish-grey, 60%),
+    "beigish-grey-300": tint-color($beigish-grey, 40%),
+    "beigish-grey-400": tint-color($beigish-grey, 20%),
+    "beigish-grey": $beigish-grey,
+    "beigish-grey-600": shade-color($beigish-grey, 20%),
+    "beigish-grey-700": shade-color($beigish-grey, 40%),
+    "beigish-grey-800": shade-color($beigish-grey, 60%),
+    "beigish-grey-900": shade-color($beigish-grey, 80%),
+);
+
+$beiges: (
+    "beige-100": tint-color($beige, 80%),
+    "beige-200": tint-color($beige, 60%),
+    "beige-300": tint-color($beige, 40%),
+    "beige-400": tint-color($beige, 20%),
+    "beige": $beige,
+    "beige-600": shade-color($beige, 20%),
+    "beige-700": shade-color($beige, 40%),
+    "beige-800": shade-color($beige, 60%),
+    "beige-900": shade-color($beige, 80%),
+);
+
+$dark-blues: (
+    "dark-blue-100": tint-color($dark-blue, 80%),
+    "dark-blue-200": tint-color($dark-blue, 60%),
+    "dark-blue-300": tint-color($dark-blue, 40%),
+    "dark-blue-400": tint-color($dark-blue, 20%),
+    "dark-blue": $dark-blue,
+    "dark-blue-600": shade-color($dark-blue, 20%),
+    "dark-blue-700": shade-color($dark-blue, 40%),
+    "dark-blue-800": shade-color($dark-blue, 60%),
+    "dark-blue-900": shade-color($dark-blue, 80%),
+);
+
+$grayish-beiges: (
+    "grayish-beige-100": tint-color($grayish-beige, 80%),
+    "grayish-beige-200": tint-color($grayish-beige, 60%),
+    "grayish-beige-300": tint-color($grayish-beige, 40%),
+    "grayish-beige-400": tint-color($grayish-beige, 20%),
+    "grayish-beige": $grayish-beige,
+    "grayish-beige-600": shade-color($grayish-beige, 20%),
+    "grayish-beige-700": shade-color($grayish-beige, 40%),
+    "grayish-beige-800": shade-color($grayish-beige, 60%),
+    "grayish-beige-900": shade-color($grayish-beige, 80%),
+);
+
+$theme-colors: map-merge-multiple((
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ), $beigish-greys, $beiges, $dark-blues, $grayish-beiges);
+
+@import '../../node_modules/bootstrap/scss/maps';
+@import '../../node_modules/bootstrap/scss/mixins';
+@import '../../node_modules/bootstrap/scss/root';
+@import '../../node_modules/bootstrap/scss/utilities';
+
+$utilities: map-merge(
+    $utilities, (
+        "color": map-merge(
+            map-get($utilities, "color"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "color"), "values"),
+                    map-merge-multiple($beigish-greys, $beiges, $dark-blues, $grayish-beiges)
+                )
+            )
+        )
+    )
+);
+
+@import '../../node_modules/bootstrap/scss/reboot';
+@import '../../node_modules/bootstrap/scss/containers';
+@import '../../node_modules/bootstrap/scss/grid';
+@import '../../node_modules/bootstrap/scss/buttons';
+@import '../../node_modules/bootstrap/scss/card';
+@import '../../node_modules/bootstrap/scss/tooltip';
+@import '../../node_modules/bootstrap/scss/popover';
+@import '../../node_modules/bootstrap/scss/helpers';
+@import '../../node_modules/bootstrap/scss/utilities/api';
