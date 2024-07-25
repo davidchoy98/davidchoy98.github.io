@@ -60,12 +60,14 @@ export default (): ReactElement => {
         }
     ];
 
+    type ObjectFit = 'fill' | 'contain' | 'cover' | 'scale-down' | 'none' | 'initial' | 'inherit';
+
     const projects: {
         description: string,
         name: string,
         url: string,
         image: string,
-        fit: string,
+        fit: ObjectFit,
         stack: {
             name: string,
             icon: IconDefinition
