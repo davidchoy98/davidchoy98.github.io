@@ -1,4 +1,3 @@
-import { websiteTitle } from "@/app/layout";
 import React, { FC, ReactElement } from "react";
 import Image from "next/image";
 
@@ -9,11 +8,11 @@ export const NavBar: FC = (): ReactElement => {
                 <a href="#" className="navbar-brand text-decoration-none text-beige ms-4">
                     <Image
                         src={'/images/logo-transparent-beige.png'}
-                        alt={websiteTitle}
+                        alt={`${process.env.websiteTitle}`}
                         width={60}
                         height={60}
                     />
-                    <span className="ms-4">{websiteTitle}</span>
+                    <span className="ms-4">{process.env.websiteTitle}</span>
                 </a>
                 <div>
                     <a href="#about-me" className="btn text-beige mx-3 px-4 py-3">About Me</a>

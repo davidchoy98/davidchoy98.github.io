@@ -13,15 +13,12 @@ const arimo = Arimo({
   display: 'swap'
 });
 
-const myName: string = "David Choy"
-export const websiteTitle: string = `All About Me | ${myName}`;
-
 export const metadata: Metadata = {
-  authors: [{ name: myName }],
-  creator: myName,
-  title: websiteTitle,
+  authors: [{ name: process.env.myName }],
+  creator: process.env.myName,
+  title: process.env.websiteTitle,
   description: "A little website showcasing the projects that I've wroked on throughout my professional life.",
-  keywords: [myName, ""],
+  keywords: [`${process.env.myName}`, ""],
   icons: {
     icon: [
       { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -33,7 +30,7 @@ export const metadata: Metadata = {
   twitter: null,
   openGraph: {
     images: "/images/logo-transparent.png",
-    title: websiteTitle,
+    title: process.env.websiteTitle,
     type: "profile",
     description: "A little website showcasing the projects that I've wroked on throughout my professional life.",
     locale: "en_MY"
