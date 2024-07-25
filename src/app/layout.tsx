@@ -3,8 +3,8 @@ import { Arimo } from "next/font/google";
 import '../scss/app.scss';
 
 import { BootstrapClient } from '@/components/BootstrapClient';
-import { NavBar } from "@/components/NavBar";
-import { Footer } from "@/components/Footer";
+import { NavBar } from "@/components/UI/NavBar";
+import { Footer } from "@/components/UI/Footer";
 
 const arimo = Arimo({
   weight: ['400', '500', '600', '700'],
