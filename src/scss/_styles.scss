@@ -1,0 +1,91 @@
+body {
+    .hero-header {
+        background: url('/images/header-background.jpg') no-repeat;
+        background-size: cover;
+        min-height: 70vh;
+        margin-top: -6rem;
+    }
+
+    .nav {
+        backdrop-filter: blur(0.5rem);
+        top: 3rem;
+        left: 0;
+        right: 0;
+        height: 4.5rem;
+        width: 80vw;
+        z-index: 100;
+
+        .call-action {
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 10rem;
+                height: 10rem;
+                background: $beigish-grey;
+                z-index: -2;
+                left: 50%;
+                top: 50%;
+                animation: rotation 2s linear infinite;
+                transform-origin: left top;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                --gap: 4px;
+                width: calc(100% - var(--gap) * 2);
+                height: calc(100% - var(--gap) * 2);
+                background: $dark-blue;
+                top: var(--gap);
+                left: var(--gap);
+                border-radius: inherit;
+                z-index: -1;
+            }
+        }
+    }
+
+    .image-container {
+        text-align: end;
+        margin-left: 10rem;
+        height: 25vh;
+        padding-top: 4rem;
+    }
+
+    .skills {
+        .card-body {
+            perspective: 300rem;
+
+            .back {
+                transform: rotateY(180deg);
+            }
+
+            .back, .face {
+                backface-visibility: hidden;
+                transition: .5s;
+            }
+
+            &:hover {
+                .face {
+                    transform: rotateY(-180deg);
+                }
+
+                .back {
+                    transform: rotateY(0deg);
+                }
+            }
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}
