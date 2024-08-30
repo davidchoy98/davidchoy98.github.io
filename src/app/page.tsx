@@ -1,11 +1,16 @@
 import React, { ReactElement } from 'react';
-import { TypeWriter } from '@/components/TypeWriter';
+import { TypeWriter } from '@/components/UI/TypeWriter';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDatabase, faFile } from '@fortawesome/free-solid-svg-icons';
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { faBootstrap, faCss3, faFigma, faGitAlt, faGithub, faHtml5, faJs, faLaravel, faPhp, faReact, faSass, faVuejs, IconDefinition } from '@fortawesome/free-brands-svg-icons';
+import AboutMe from '@/components/UI/Sections/AboutMe';
+import moment from 'moment';
+import ResumeButton from '@/components/UI/Elements/ResumeButton';
 
 export default (): ReactElement => {
+    type ObjectFit = 'fill' | 'contain' | 'cover' | 'scale-down' | 'none' | 'initial' | 'inherit';
+
     const skills: {
         icon: IconDefinition,
         name: string
@@ -60,8 +65,6 @@ export default (): ReactElement => {
         }
     ];
 
-    type ObjectFit = 'fill' | 'contain' | 'cover' | 'scale-down' | 'none' | 'initial' | 'inherit';
-
     const projects: {
         description: string,
         name: string,
@@ -114,6 +117,60 @@ export default (): ReactElement => {
         }
     ];
 
+    const experiences = [
+        {
+            name: "My Insure Link",
+            logo: "mil.jpeg",
+            start_date: "2020-06-08",
+            end_date: "2021-04-30",
+            tasks: [
+                "Worked on an insurance selling platform and event tracking using Google Analytics",
+                "Involved in migration from CodeIgniter 2 to Laravel 5.x",
+                "Heavily involved in API integration with third-party APIs, including payment gateways."
+            ]
+        },
+        {
+            name: "Howden Insurance Brokers",
+            logo: "howden.png",
+            start_date: "2021-05-01",
+            end_date: "2022-05-17",
+            tasks: [
+                "Worked on multiple insurance selling web applications using Laravel 8.x and ReactJS",
+                "Proposed ways to improve security of the systems and helped to rectify the security risks found",
+                "Developed a multi-function intranet system from scratch using Laravel",
+                "Involved in full SDLC cycle from requirement gathering to deployment for all the projects"
+            ]
+        },
+        {
+            name: "Sparksoft",
+            logo: "sparksoft.png",
+            start_date: "2022-05-23",
+            end_date: "2024-08-30",
+            tasks: [
+                "Introduced type system to the APIs and error reporting mechanism to the development and DevOps team",
+                "Integrated third-party services like payment gateways, broadcasting services and AWS Services (S3, SES, etc.)",
+                "Involved in UI / UX design, optimization, and enhancements."
+            ]
+        }
+    ];
+
+    const educations = [
+        {
+            name: "Universiti Tunku Abdul Rahman",
+            level: "Foundation in Science",
+            skill: "C++",
+            start_date: "May 2016",
+            end_date: "May 2017"
+        },
+        {
+            name: "Universiti Tunku Abdul Rahman",
+            level: "Bachelor's Degree in Science (Hons)",
+            field: "Software Engineering",
+            start_date: "May 2017",
+            end_date: "May 2020"
+        }
+    ];
+
     return (
         <>
             <div className="hero-header align-content-center px-4">
@@ -122,35 +179,60 @@ export default (): ReactElement => {
 
                 <TypeWriter />
 
-                <button className="btn btn-primary text-beige rounded mt-5 px-4 py-2">
-                    Resume <FontAwesomeIcon icon={faFile} size="lg" fixedWidth />
-                </button>
+                <ResumeButton className="text-beige mt-5" />
             </div>
-            <div className="content px-4">
-                <div className="about-me mt-5">
-                    <h5 className="mb-5">{`<About Me />`}</h5>
-                    <p>
-                        Welcome to my corner of the web! I'm passionate about technology and innovation, with a keen 
-                        interest in coding, problem-solving, and creating meaningful projects. I am a dedicated 
-                        Software Engineer with a degree from Universiti Tunku Abdul Rahman (UTAR), specializing in
-                        web application development for over 4 years. Passionate about problem-solving and innovation,
-                        I strive to deliver high-quality code and exceptional user experiences in every project I undertake.
-                    </p>
-                </div>
-                <div className="skills mt-5">
+            <div className="container content px-4">
+                <AboutMe />
+                <div id="skills" className="mt-5">
                     <h5 className="mb-5">{`<Skills />`}</h5>
-                    <div className="hstack gap-3">
+                    <div className="hstack gap-3 justify-content-center">
                         {skills.map((skill) => (
                             <div className="card">
                                 <div className="card-body d-flex flex-row align-items-center justify-content-center">
-                                    <FontAwesomeIcon className="face" icon={skill.icon} size="5x" fixedWidth />
+                                    <FontAwesomeIcon className="face" icon={skill.icon} size="3x" fixedWidth />
                                     <p className="position-absolute mb-0 back">{skill.name}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="past-projects mt-5">
+                <div id="work-experience" className="row mt-5">
+                    <div className="col-12">
+                        <h5 className="mb-5">{`<Work Experience />`}</h5>
+                        {experiences.map((experience, index) => (
+                            moment(experience.start_date).isBefore(moment()) && (
+                                <div key={index} className="timeline-wrapper">
+                                    <div className="timeline-content">
+                                        <div className="row">
+                                            <div className={`col-6 ${index % 2 === 0 ? 'border-end' : 'offset-6 border-start'} border-2 border-beigish-grey timeline ${index % 2 === 0 ? 'tip-right' : 'tip-left'}`}>
+                                                <div className={`card timeline-content-body`}>
+                                                    <div className="card-body py-5 ps-4 pe-5">
+                                                        <span className="badge text-bg-beigish-grey">
+                                                            {
+                                                                `${moment(experience.start_date).format('MMM YYYY')} -
+                                                                ${moment.isMoment(moment(experience.end_date)) ? 
+                                                                    moment(experience.end_date).format('MMM YYYY') :
+                                                                    'Present'
+                                                                }`
+                                                            }
+                                                        </span>
+                                                        <h3 className="mt-2 mb-3">{experience.name}</h3>
+                                                        <ul>
+                                                            {experience.tasks.map((task) => (
+                                                                <li>{task}</li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        ))}
+                    </div>
+                </div>
+                <div id="past-projects" className="mt-5">
                     <h5 className="mb-5">{`<Past Projects />`}</h5>
                     {projects.map((project) => (
                         <div className="row">
@@ -158,7 +240,7 @@ export default (): ReactElement => {
                                 <div className="card my-4 bg-secondary">
                                     <div className="card-body rounded ps-5 overflow-hidden">
                                         <div className="row align-items-center">
-                                            <div className="col-5">
+                                            <div className="col-6">
                                                 <Image
                                                     className="rounded-circle bg-beigish-grey p-1"
                                                     alt={project.name}
@@ -177,13 +259,13 @@ export default (): ReactElement => {
                                                     ))}
                                                 </div>
                                             </div>
-                                            <div className="col-7 align-self-start">
+                                            <div className="col-6 align-self-start">
                                                 <div className="image-container ps-3 ">
                                                     <Image
                                                         src={`/images/portfolio/${project.image}`}
                                                         alt={`${project.name}-landing`}
-                                                        width={1500}
-                                                        height={1500}
+                                                        width={700}
+                                                        height={700}
                                                         style={{
                                                             objectFit: project.fit,
                                                             objectPosition: "0% 0%",

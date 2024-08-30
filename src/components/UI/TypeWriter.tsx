@@ -15,8 +15,6 @@ export const TypeWriter: FC = (): ReactElement => {
     };
 
     return (
-        <Typewriter
-            options={typeWriterOptions}
-        />
+        <Typewriter options={typeWriterOptions} />
     );
 }

@@ -6,7 +6,7 @@ body {
         margin-top: -6rem;
     }
 
-    .nav {
+    #nav {
         backdrop-filter: blur(0.5rem);
         top: 3rem;
         left: 0;
@@ -49,12 +49,12 @@ body {
 
     .image-container {
         text-align: end;
-        margin-left: 10rem;
+        margin-left: 5rem;
         height: 25vh;
         padding-top: 4rem;
     }
 
-    .skills {
+    #skills {
         .card-body {
             perspective: 300rem;
 
@@ -77,6 +77,79 @@ body {
                 }
             }
         }
+    }
+
+    #work-experience {
+        .timeline {
+            position: relative;
+
+            &::before {
+                content: "";
+                border-radius: 50%;
+                background-color: $beige;
+                top: 8rem;
+                position: absolute;
+                
+                height: 20px;
+                width: 20px;
+            }
+
+            &.tip-left {
+                &::before {
+                    left: -0.65rem;
+                }
+
+                .timeline-content-body {
+                    margin-left: 2rem;
+
+                    &::before, &::after {
+                        left: -15px;
+                    }
+                }
+            }
+
+            &.tip-right {
+                &::before {
+                    right: -0.65rem;
+                }
+
+                .timeline-content-body {
+                    margin-right: 2rem;
+
+                    &::before, &::after {
+                        left: 97%;
+                    }
+                }
+            }
+
+            .timeline-content-body {
+                position: relative;
+                background-color: $dark-blue;
+                box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, .5);
+    
+                &::before, &::after {
+                    content: "";
+                    position: absolute;
+                    top: 7.5rem;
+                    height: 2rem;
+                    width: 2rem;
+                    background-color: $dark-blue;
+                    box-sizing: border-box;
+                    transform: rotate(45deg);
+                    box-shadow: inherit;
+                    z-index: -1;
+                    border-top: inherit;
+                    border-left: inherit;
+                }
+    
+                &::after {
+                    border: none;
+                    box-shadow: none;
+                    z-index: 8;
+                }
+            }
+        }
+
     }
 }
 
